@@ -1,4 +1,4 @@
-package com.bensites.java.EasyCalc;
+package com.bensites.java.EasyCalc.Console;
 
 class ConsoleMessage {
 

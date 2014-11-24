@@ -1,8 +1,9 @@
-package com.bensites.java.EasyCalc
+package com.bensites.java.EasyCalc.Console
 
 class Console{
 	def console = []
 	def continueLine = false
+	def lock = false
 	/**
 	 * Print a message, followed by a new line
 	 * @param objectToPrint Object to print
@@ -43,9 +44,17 @@ class Console{
 		toPrint
 	}
 	void update() {
-		for (i in 1..100)
-			System.out.println()
-		for (line in console)
-			System.out.println line.getValue()
+		if(!lock) {
+			for (i in 1..100)
+				System.out.println()
+			for (line in console)
+				System.out.println line.getValue()
+		}
+	}
+	void lock() {
+		lock = true
+	}
+	void unlock() {
+		lock = false
 	}
 }
