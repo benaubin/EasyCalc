@@ -1,7 +1,5 @@
 package com.bensites.java.EasyCalc.Console
 
-import java.text.DecimalFormat
-
 class ProgressBar extends ConsoleMessage{
 	
 	int stepsLeft

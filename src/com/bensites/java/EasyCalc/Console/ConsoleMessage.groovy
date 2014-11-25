@@ -4,8 +4,7 @@ class ConsoleMessage {
 
 	final Console
 	Object value
-	String hi
-	
+
 	ConsoleMessage(Console belongsTo, Object message) {
 		Console = belongsTo
 		value = message
@@ -20,5 +19,8 @@ class ConsoleMessage {
 	void combineWith(Object message) {
 		value = value + message
 	}
-
+	@Override
+	String toString() {
+		value
+	}
 }

@@ -48,7 +48,7 @@ class Console{
 			for (i in 1..100)
 				System.out.println()
 			for (line in console)
-				System.out.println line.getValue()
+				System.out.println line.toString()
 		}
 	}
 	void lock() {
@@ -56,5 +56,6 @@ class Console{
 	}
 	void unlock() {
 		lock = false
+		this.update()
 	}
 }
