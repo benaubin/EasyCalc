@@ -8,6 +8,9 @@ class Operator {
 		 symbols = Symbols
 		 addTo(Main.Registry)
 	 }
+	 Operator(String Symbol, Closure<Double> Operation){
+		 this([Symbol],Operation)
+	 }
 	 HashMap<String, Closure> addTo(HashMap<String, Closure> Registry) {
 		 symbols.each {
 			 Registry.put(it, operation)
