@@ -7,7 +7,7 @@ import com.bensites.java.EasyCalc.Console.*
  * @author Ben
  */
 class Main {
-	private static HashMap<String,Closure> Registry = [:]
+	static HashMap<String,Closure> Registry = [:]
 	final static Console console = new Console()
 	static Parser parser
 	static main(args) {
@@ -33,8 +33,8 @@ class Main {
 		new Operator("-", {x, y ->
 			x - y
 		})
-		new Operator(["•","*","x","X"], {
-			
+		new Operator(["•","*","x","X"], {x, y ->
+			x * y
 		})
 		loadingBar.progress()
 		//TODO: Load mods
@@ -43,7 +43,7 @@ class Main {
 		loadingBar.progress()
 
 		def Equation = new Input(console, "Equation")
-		Parser.parse
+		parser.parse(Equation.input)
 	}
 
 	ConsoleMessage println(Object toPrint){

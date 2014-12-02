@@ -3,7 +3,7 @@ package com.bensites.java.EasyCalc
 class Operator {
 	 Closure<Double> operation = {return 0.0}
 	 String symbols = []
-	 Operator(String[] Symbols, Closure<Double> Operation){
+	 Operator(ArrayList<String> Symbols, Closure<Double> Operation){
 		 operation = Operation
 		 symbols = Symbols
 		 addTo(Main.Registry)

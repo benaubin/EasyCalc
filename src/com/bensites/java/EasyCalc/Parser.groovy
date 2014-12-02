@@ -8,9 +8,9 @@ class Parser {
 	public Parser(Console c) {
 		console = c
 	}
-	static parse(String s){
+	def parse(String s){
 		StringBuilder temp = new StringBuilder()
-		def equation = [""]
+		def equation = []
 		s.toCharArray().each {
 			if(it != ' ')
 				temp.append it
@@ -18,9 +18,8 @@ class Parser {
 				equation.add temp.toString()
 				temp = new StringBuilder()
 			}
-
-
 		}
+		run(equation)
 	}
 	def lookFor(Object something, Object[] list){
 		def i = 0
@@ -36,6 +35,9 @@ class Parser {
 			return where[0]
 		else
 			return where
+	}
+	def run(String[] equation){
+		Main.Registry.get(equation[1])(equation[0],equation[2])
 	}
 
 }
