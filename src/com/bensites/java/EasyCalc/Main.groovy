@@ -7,12 +7,10 @@ import com.bensites.java.EasyCalc.Console.*
  * @author Ben
  */
 class Main {
-	private HashMap<String,Closure> Registry = [:]
+	private static HashMap<String,Closure> Registry = [:]
 	final static Console console = new Console()
 	static Parser parser
-	static Main instance
 	static main(args) {
-		instance = new Main()
 		console.println "  ______                 _____      _      "
 		console.println " |  ____|               / ____|    | |     "
 		console.println " | |__   __ _ ___ _   _| |     __ _| | ___ "
@@ -29,14 +27,23 @@ class Main {
 		loadingBar.progress()
 		parser = new Parser(console)
 		loadingBar.progress()
-		//TODO: Load core operators
+		new Operator("+", {x, y ->
+			x + y
+		})
+		new Operator("-", {x, y ->
+			x - y
+		})
+		new Operator(["•","*","x","X"], {
+			
+		})
 		loadingBar.progress()
 		//TODO: Load mods
 		loadingBar.progress()
 		//TODO: Finish up
 		loadingBar.progress()
-		def ask = new Input(console, "Equation")
 
+		def Equation = new Input(console, "Equation")
+		Parser.parse
 	}
 
 	ConsoleMessage println(Object toPrint){
