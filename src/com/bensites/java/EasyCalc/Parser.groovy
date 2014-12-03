@@ -1,6 +1,6 @@
 package com.bensites.java.EasyCalc
 
-import com.bensites.java.EasyCalc.Console.Console
+import com.bensites.java.EasyCalc.Util.Console.Console
 
 class Parser {
 
@@ -36,7 +36,7 @@ class Parser {
 		else
 			return where
 	}
-	def run(String[] equation){
+	def run(ArrayList<String> equation){
 		Main.Registry.get(equation[1])(equation[0],equation[2])
 	}
 

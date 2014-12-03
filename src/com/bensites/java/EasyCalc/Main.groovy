@@ -1,6 +1,7 @@
 package com.bensites.java.EasyCalc
 
-import com.bensites.java.EasyCalc.Console.*
+import com.bensites.java.EasyCalc.Util.*
+import com.bensites.java.EasyCalc.Util.Console.*
 /** Main class.
  * This class sets up dependencies, and imports the core operators.
  * It also stores the parser and registry for this runtime of the program.
@@ -43,7 +44,12 @@ class Main {
 		loadingBar.progress()
 
 		def Equation = new Input(console, "Equation")
-		parser.parse(Equation.input)
+		Util.repeat(3, {System.out.println("Hi!")})
+		def answer = console.println("Now Running " + Equation.input)
+		answer.setValue("${parser.parse(Equation.input)}")
+		new Input(console, "Press enter to continue")
+
+
 	}
 
 	ConsoleMessage println(Object toPrint){
