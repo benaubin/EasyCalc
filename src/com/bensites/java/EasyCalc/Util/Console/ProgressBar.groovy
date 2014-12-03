@@ -1,4 +1,4 @@
-package com.bensites.java.EasyCalc.Console
+package com.bensites.java.EasyCalc.Util.Console
 
 class ProgressBar extends ConsoleMessage{
 	

@@ -1,9 +1,10 @@
-package com.bensites.java.EasyCalc.Console
+package com.bensites.java.EasyCalc.Util.Console
 
 class Console{
 	def console = []
 	def continueLine = false
 	def lock = false
+	def Scanner scan = new Scanner(System.in)
 	/**
 	 * Print a message, followed by a new line
 	 * @param objectToPrint Object to print
@@ -57,5 +58,8 @@ class Console{
 	void unlock() {
 		lock = false
 		this.update()
+	}
+	boolean removeLast(){
+		console.remove(console.size() - 1)
 	}
 }

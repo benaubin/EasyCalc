@@ -1,4 +1,4 @@
-package com.bensites.java.EasyCalc.Console
+package com.bensites.java.EasyCalc.Util.Console
 
 class Input extends ConsoleMessage {
 	final String input;
@@ -9,9 +9,7 @@ class Input extends ConsoleMessage {
 		message = Message
 		belongsTo.lock()
 		print("$message> ")
-		Scanner scan = new Scanner(System.in)
-		input = scan.nextLine()
-		scan.close()
+		input = belongsTo.scan.nextLine()
 		belongsTo.print((ConsoleMessage) this, true, false)
 		belongsTo.unlock()
 	}
