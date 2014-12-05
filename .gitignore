@@ -1,3 +1,8 @@
 .settings
 bin
 *.class
+/lib
+build
+.gradle
+gradle
+settings.gradle
