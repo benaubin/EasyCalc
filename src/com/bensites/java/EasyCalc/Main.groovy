@@ -18,6 +18,9 @@ class Main {
 		printTitle(console)
 		console.println "Welcome to EasyCal"
 		console.println "Written by everyone, supported by Ben of bensites.com"
+		GUI dialog = new GUI()
+		dialog.pack()
+		dialog.setVisible(true)
 		def loadingSteps = ["Filing files","Operating Operators","Finishing up","Loading complete"]
 		def loadingBar = new ProgressBar(console, loadingSteps)
 		console.print(loadingBar,true,true)
