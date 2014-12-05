@@ -8,7 +8,7 @@ class Parser {
 	public Parser(Console c) {
 		console = c
 	}
-	def stringToArray(String s){
+	ArrayList<String> stringToArray(String s){
 		StringBuilder temp = new StringBuilder()
 		def array = []
 		s.toCharArray().each {

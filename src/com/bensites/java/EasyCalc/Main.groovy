@@ -13,7 +13,7 @@ class Main {
 	static LinkedHashMap<String,Closure> Registry = [:]
 	final static Console console = new Console()
 	static shell = new GroovyShell()
-	static Parser parser
+	public static Parser parser
 	static main(args) {
 		printTitle(console)
 		console.println "Welcome to EasyCal"
@@ -81,10 +81,6 @@ class Main {
 		MainGUI mainGUI = new MainGUI()
 		mainGUI.pack()
 		mainGUI.setVisible(true)
-		while(true) {
-			def Equation = new Input(console, "Equation")
-			console.println("Answer: ${parser.run(parser.stringToArray(Equation.input))}")
-		}
 	}
 
 	ConsoleMessage println(Object toPrint){

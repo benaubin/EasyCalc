@@ -6,26 +6,22 @@ import java.awt.event.*;
 
 public class MainGUI extends JDialog {
 	private JPanel contentPane;
-	private JButton buttonOK;
+	private JButton buttonCalculate;
 	private JTextField equationField;
-	private JButton buttonCancel;
+	private JLabel Answer;
 
 	public MainGUI(){
 		setContentPane(contentPane);
 		setModal(true);
-		getRootPane().setDefaultButton(buttonOK);
+		getRootPane().setDefaultButton(buttonCalculate);
 
-		buttonOK.addActionListener(new ActionListener() {
+		buttonCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				onOK();
+				equationField.setText(equationField.getText() + " = " + Main.parser.run(Main.parser.stringToArray(equationField.getText())).toString());
 			}
 		});
 
-		buttonCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				onCancel();
-			}
-		});
+
 
 // call onCancel() when cross is clicked
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
