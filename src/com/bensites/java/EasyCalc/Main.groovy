@@ -54,11 +54,6 @@ class Main {
             def df = new java.text.DecimalFormat("#" + s.toString())
             Double.valueOf(df.format(value))
         },
-        /*"reload":{ double sure ->
-            if(sure == 1){
-                com.bensites.java.EasyCalc.Main.reload()
-            }
-        }*/
 ]""")
 		}
 		if(!orderFile.exists()){
