@@ -18,7 +18,7 @@ class Main {
 		printTitle(console)
 		console.println "Welcome to EasyCal"
 		console.println "Written by everyone, supported by Ben of bensites.com"
-		GUI dialog = new GUI()
+		StartGUI dialog = new StartGUI()
 		dialog.pack()
 		dialog.setVisible(true)
 		def loadingSteps = ["Filing files","Operating Operators","Finishing up","Loading complete"]
