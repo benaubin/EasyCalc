@@ -61,8 +61,8 @@ In order to add an operation to run, you have to decide when you want it to run.
 ~~~
 So, you can test is out, and see that it works.
 ~~~json
-Equation: 4 potato 7 + 1
-Answer: 19.0
+Equation: 4 potato 7
+Answer: 18.0
 ~~~
 
 
