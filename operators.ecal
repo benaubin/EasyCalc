@@ -1,0 +1,34 @@
+[
+        "+":{ x, y ->
+            x + y
+        },
+        "-":{ x, y ->
+            x - y
+        },
+        "*":{ x, y ->
+            x * y
+        },
+        "/":{ x, y ->
+            x / y
+        },
+        "^":{ double x, double y ->
+            java.lang.Math.pow(x, y)
+        },
+        "roundTo":{ double value, double places ->
+            if (places < 0) throw new IllegalArgumentException();
+            def s = new StringBuffer()
+            if (places > 0){
+                s.append(".")
+                for(i in 1..places)
+                    s.append("#")
+            }
+            com.bensites.java.EasyCalc.Main.println(s.toString())
+            def df = new java.text.DecimalFormat("#" + s.toString())
+            Double.valueOf(df.format(value))
+        },
+        /*"reload":{ double sure ->
+            if(sure == 1){
+                com.bensites.java.EasyCalc.Main.reload()
+            }
+        }*/
+]
