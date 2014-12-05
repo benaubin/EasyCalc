@@ -7,7 +7,6 @@ import java.awt.event.*;
 public class GUI extends JDialog {
 	private JPanel contentPane;
 	private JButton buttonOK;
-	private JButton buttonCancel;
 
 	public GUI(){
 		setContentPane(contentPane);
@@ -17,12 +16,6 @@ public class GUI extends JDialog {
 		buttonOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				onOK();
-			}
-		});
-
-		buttonCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				onCancel();
 			}
 		});
 
@@ -50,11 +43,5 @@ public class GUI extends JDialog {
 	private void onCancel(){
 // add your code here if necessary
 		dispose();
-	}
-
-	public static void main(String[] args){
-		GUI dialog = new GUI();
-		dialog.pack();
-		dialog.setVisible(true);
 	}
 }

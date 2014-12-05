@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="419e9461-52f7-41f4-bc36-0c2d5f4fc301" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/Main.groovy" afterPath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/Main.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form" afterPath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java" afterPath="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="EasyCalc.iws" />
@@ -41,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/Main.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38727272" vertical-offset="87" max-vertical-offset="1215">
-              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="1215">
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding>
                 <element signature="e#1142#1929#1" expanded="false" />
                 <element signature="e#2012#2094#1" expanded="false" />
@@ -64,39 +63,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="975">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="57" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="690">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
-                <element signature="e#347#437#0" expanded="true" />
-                <element signature="e#436#437#0" expanded="true" />
-                <element signature="e#474#568#0" expanded="true" />
-                <element signature="e#567#568#0" expanded="true" />
-                <element signature="e#682#773#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#843#937#0" expanded="true" />
-                <element signature="e#936#937#0" expanded="true" />
+                <element signature="e#316#406#0" expanded="true" />
+                <element signature="e#405#406#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order.ecal" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/order.ecal">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-              <caret line="0" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="1" />
-              <folding />
-            </state>
+      <file leaf-file-name="GUI.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -130,8 +113,9 @@
         <option value="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/defaultoperators.ecal" />
         <option value="$PROJECT_DIR$/order.ecal" />
         <option value="$PROJECT_DIR$/operators.ecal" />
-        <option value="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java" />
         <option value="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/Main.groovy" />
+        <option value="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java" />
+        <option value="$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form" />
       </list>
     </option>
   </component>
@@ -477,12 +461,12 @@
       <workItem from="1417656894856" duration="1138000" />
       <workItem from="1417701836842" duration="459000" />
       <workItem from="1417703559859" duration="8375000" />
-      <workItem from="1417740921381" duration="7184000" />
+      <workItem from="1417740921381" duration="7634000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29400000" />
+    <option name="totallyTimeSpent" value="29850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -509,7 +493,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19305556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32121924" sideWeight="0.49964362" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32121924" sideWeight="0.49964362" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -922,6 +906,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/Main.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="1215">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <element signature="e#1142#1929#1" expanded="false" />
+            <element signature="e#2012#2094#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/order.ecal">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
@@ -938,37 +933,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="690">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#316#406#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="975">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="57" selection-end-column="32" />
-          <folding>
-            <element signature="e#347#437#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#474#568#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#682#773#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#843#937#0" expanded="true" />
-            <element signature="e#936#937#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bensites/java/EasyCalc/Main.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38727272" vertical-offset="87" max-vertical-offset="1215">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-          <folding>
-            <element signature="e#1142#1929#1" expanded="false" />
-            <element signature="e#2012#2094#1" expanded="false" />
-          </folding>
-        </state>
       </provider>
     </entry>
   </component>
