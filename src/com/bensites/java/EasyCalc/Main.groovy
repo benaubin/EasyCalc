@@ -78,6 +78,9 @@ class Main {
 		order = ((ArrayList<ArrayList<String>>)shell.evaluate(orderFile.getText()))
 		loadingBar.progress()
 		//Start the program
+		MainGUI mainGUI = new MainGUI()
+		mainGUI.pack()
+		mainGUI.setVisible(true)
 		while(true) {
 			def Equation = new Input(console, "Equation")
 			console.println("Answer: ${parser.run(parser.stringToArray(Equation.input))}")
