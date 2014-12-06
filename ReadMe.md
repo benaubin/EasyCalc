@@ -8,7 +8,7 @@ To use, just start up the program, wait just a few seconds for it to load, and t
 
 Core Operators
 ------------------
-All operators in EasyCalc are modular, but inorder to start you off, we give you the following operators listed below. If you want more, take the operators.ecal, and the order.ecal file from this repository, and add it to your download's runtime directory.
+All operators in EasyCalc are modular, but in order to start you off, we give you the following operators listed below. If you want more, take the operators.ecal, and the order.ecal file from this repository, and add it to your download's runtime directory.
 
 Operator| Function
 ----------	| ----------
@@ -50,7 +50,7 @@ If there is no comma at the end of that snipet, **add one**. That is very import
         ["roundTo"]
 ]
 ~~~
-In order to add an operation to run, you have to decide when you want it to run. If you want it to run during multiplication and division, place it in that list..
+In order to add an operation to run, you have to decide in what order you want it to run. If you want it to run during multiplication and division, place it in that list..
 ~~~groovy
 [
         ["^"],
