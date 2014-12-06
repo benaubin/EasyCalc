@@ -23,7 +23,6 @@ class Parser {
 		return array
 	}
 	def run(ArrayList<String> equation) {
-		boolean failed = false
 		try {
 			Main.order.each { level ->
 				for (i in 0..equation.size() - 1)
@@ -34,7 +33,7 @@ class Parser {
 									Double.parseDouble(equation[i + 1]))
 							for (a in 1..3) equation.remove(i - 1); equation.add(i - 1, answer);
 						} catch (MissingMethodException e) {
-							Main.reload() 1
+							Main.reload()
 						}
 
 					}
