@@ -18,9 +18,11 @@ class Main {
 		printTitle(console)
 		console.println "Welcome to EasyCal"
 		console.println "Written by everyone, supported by Ben of bensites.com"
-		StartGUI dialog = new StartGUI()
-		dialog.pack()
-		dialog.setVisible(true)
+		def GUIThread = new Thread({
+			MainGUI mainGUI = new MainGUI()
+			mainGUI.pack()
+			mainGUI.setVisible(true)
+		},"GUIthread")
 		def loadingSteps = ["Filing files","Operating Operators","Finishing up","Loading complete"]
 		def loadingBar = new ProgressBar(console, loadingSteps)
 		console.print(loadingBar,true,true)
@@ -68,7 +70,6 @@ class Main {
         ["roundTo"]
 ]""")
 		}
-
 		loadingBar.progress()
 		//Load all operators
 		Registry = shell.evaluate(operatorsFile.getText())
@@ -78,9 +79,7 @@ class Main {
 		order = ((ArrayList<ArrayList<String>>)shell.evaluate(orderFile.getText()))
 		loadingBar.progress()
 		//Start the program
-		MainGUI mainGUI = new MainGUI()
-		mainGUI.pack()
-		mainGUI.setVisible(true)
+		GUIThread.start()
 	}
 
 	ConsoleMessage println(Object toPrint){
