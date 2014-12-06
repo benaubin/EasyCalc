@@ -68,11 +68,11 @@ Answer: 18.0
 
 Contributing
 --------------
-By contributing, you are giving us your code under an MIT liscense. If you don't like that, don't code for us.
+By contributing, you are giving us your code under an MIT license. If you don't like that, don't code for us.
 Other things to keep in mind:
 - Keep your code short, efficient, & readable.
 - Commit often
-- Keep changes that might break the program in a seprate branch, if you are a core developer
+- Keep changes that might break the program in a separate branch, if you are a core developer
 - Do not add core operators, instead, add operators to the operators.ecal file.
 
 Making Operators
@@ -98,7 +98,7 @@ Let's open Operators.ecal. You should see something that looks like this sample 
         },...
 ]
 ~~~
-If you have every worked with Groovy before, you might reconise this. It is a simple HashMap, that will be interprated at runtime.
+If you have every worked with Groovy before, you might recognise this. It is a simple HashMap, that will be interpreted at runtime.
 It's easy to make your own operator, just add this to the end of the file:
 ~~~groovy
  "potato":{ x, y ->
@@ -136,10 +136,10 @@ Now, when we run the program, potato is evaluted first, so 7 potato 7 is 18.
 Equation: 4 potato 7
 Answer: 18.0
 ~~~
-That is correct, since 7 * 2 = 14, since is takes the second one, multiply's it by 2, and adds the first one. Now, let's try adding 1 to that.
+That is correct, since 7 * 2 = 14, since it takes the second one, multiplies it by 2, and adds the first one. Now, let's try adding 1 to that.
 ~~~json
 Equation: 4 potato 7 + 1
 Answer: 19.0
 ~~~
 That is also correct, since in the order of operations we made, potato goes before '+'.
-You just made your own operator! Do what ever you want with it, sell it, all you have to do is make sure that your end user cannot only look at the code, but also edit, sell and redistribute it. Make sure to distribute it with a comma at the end, or it might break.
+You just made your own operator! Do what ever you want with it, even sell it, all you have to do is make sure that your end user can look at the code, but also edit, sell and redistribute it. Make sure to distribute it with a comma at the end, or it might break.
