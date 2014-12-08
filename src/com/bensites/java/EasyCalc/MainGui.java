@@ -9,6 +9,7 @@ public class MainGUI extends JDialog {
 	private JPanel contentPane;
 	private JButton buttonCalculate;
 	private JTextField equationField;
+	private JLabel Answer;
 
 	public MainGUI(){
 		setContentPane(contentPane);
@@ -18,8 +19,10 @@ public class MainGUI extends JDialog {
 		buttonCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				if (Main.parser.run(Main.parser.stringToArray(equationField.getText())).toString() != "NaN")
-					equationField.setText(equationField.getText() + " = " +
+					Answer.setText("= " +
 							Main.parser.run(Main.parser.stringToArray(equationField.getText())).toString());
+				else
+					Answer.setText("");
 			}
 		});
 
