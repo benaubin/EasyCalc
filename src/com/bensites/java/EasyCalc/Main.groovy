@@ -16,9 +16,9 @@ class Main {
 	static File operatorsFile
 	static File orderFile
 	static File modsFolder
-	static ArrayList<ArrayList<String>> order;
+	static ArrayList<ArrayList<String>> order = []
 	static LinkedHashMap<String,Closure> Registry = [:]
-	static LinkedHashMap<String,LinkedHashMap> meta
+	static LinkedHashMap<String,LinkedHashMap> meta = [:]
 	final static Console console = new Console()
 	static shell = new GroovyShell()
 	public static Parser parser
