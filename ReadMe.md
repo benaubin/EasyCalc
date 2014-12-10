@@ -21,35 +21,8 @@ roundTo	| Rounds _ to _ decimals
 
 Installing Operators
 -----------------------
-To install operators, it's pretty easy. You should have been given a snipet of code to install, looking something like this. If you do not have one, you might want to create your own. Scroll down this page to learn how.
-~~~groovy
-"potato":{ x, y ->
-            y * 2 + x
-        },
-~~~
-All you have to do, is open your operators.ecal file in the runtime directory of the program, and add the snipet to the bottom.
-~~~groovy
-[
-        "+":{ x, y ->
-            x + y
-        },
-        "-":{ x, y ->
-            x - y
-        },...
-        "potato":{ x, y ->
-            y * 2 + x
-        },
-]
-~~~
-If there is no comma at the end of that snipet, **add one**. That is very important, and might result in errors if not followed. Now, open up order.ecal.
-~~~groovy
-[
-        ["^"],
-        ["*","/"],
-        ["+","-"],
-        ["roundTo"]
-]
-~~~
+To install operators, it's pretty easy. You should have been given a folder of operators (.ecal files) to install. If you do not have one, you might want to create your own. Scroll down this page to learn how. Just drag the file in
+
 In order to add an operation to run, you have to decide in what order you want it to run. If you want it to run during multiplication and division, place it in that list..
 ~~~groovy
 [
