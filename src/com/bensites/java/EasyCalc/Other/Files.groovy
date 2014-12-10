@@ -22,33 +22,27 @@ class Files {
         ["+","-"],
         ["roundTo"]
 """
-    public final static String Suggested = """
-        "^":{ double x, double y ->
-            java.lang.Math.pow(x, y)
-        },
-        "roundTo":{ double value, double places ->
-            if (places < 0) throw new IllegalArgumentException();
+    public final static LinkedHashMap<String, String> Suggested = [
+        "^":"""java.lang.Math.pow(x, y)""",
+        "roundTo":"""if (y < 0) throw new IllegalArgumentException();
             def s = new StringBuffer()
-            if (places > 0){
+            if (y > 0){
                 s.append(".")
-                for(i in 1..places)
+                for(i in 1..y)
                     s.append("#")
             }
             def df = new java.text.DecimalFormat("#" + s.toString())
-            Double.valueOf(df.format(value))
-        },
-        "rt":{ double root, double number ->
-            if(root < 0){
+            Double.valueOf(df.format(x))""",
+        "rt":"""if(x < 0){
                 return Double.POSITIVE_INFINITY
-            } else if (root == 1){
+            } else if (x == 1){
                 return number
-            } else if (root == 2){
-                return java.lang.Math.sqrt(number)
-            } else if (root == 3){
-                return java.lang.Math.cbrt(number)
+            } else if (x == 2){
+                return java.lang.Math.sqrt(y)
+            } else if (x == 3){
+                return java.lang.Math.cbrt(y)
             } else {
                 return Double.NaN
-            }
-        },
-"""
+            }""",
+    ]
 }

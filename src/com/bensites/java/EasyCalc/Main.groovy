@@ -4,6 +4,8 @@ import com.bensites.java.EasyCalc.GUI.InstallOperators
 import com.bensites.java.EasyCalc.GUI.MainGUI
 import com.bensites.java.EasyCalc.Other.Files
 import com.bensites.java.EasyCalc.Util.Console.*
+import sun.plugin.javascript.navig.Link
+
 /** Main class.
  * This class sets up dependencies, and imports the core operators.
  * It also stores the parser and registry for this runtime of the program.
@@ -24,10 +26,9 @@ class Main {
 		console.println "Your OS:" + System.getProperty("os.name")
 		if(System.getProperty("os.name") == "Mac OS X")
 			easyCalcFolder = new File("${System.getProperty("user.home")}/Library/Application Support/EasyCalc")
-		else console.println "EasyCalc has not been optimised for your operating system. Please raise a GitHub Issue"
+		else console.println "EasyCalc isn't fully supported with your OS. Please paste this into a GitHub issue."
 		if(!easyCalcFolder.exists()) easyCalcFolder.mkdirs()
 		printTitle(console)
-
 		console.println "Welcome to EasyCal"
 		console.println "Written by Ben of bensites.com"
 		def GUIThread = new Thread({
@@ -46,6 +47,7 @@ class Main {
 		modsFolder = new File(easyCalcFolder, "mods")
 		if(!operatorsFile.exists()){
 			operatorsFile.createNewFile()
+			operatorsFile.setText(Files.DefaultOperators)
 			InstallOperators installOperators = new InstallOperators()
 			installOperators.pack()
 			installOperators.setVisible(true)
@@ -85,10 +87,7 @@ class Main {
 	}
 
 	static void useSuggestedOperators(){
-		operatorsFile.setText(Files.DefaultOperators + Files.Suggested)
-	}
-	static void useDefualtOperators(){
-		operatorsFile.setText(Files.DefaultOperators)
+		addMod(Files.Suggested, "EasyCalc Addons")
 	}
 	static String runOperator(String argLeft, String operator, String argRight){
 		try {
@@ -109,15 +108,24 @@ class Main {
 				console.println "Loading mod ${it.name}"
 				it.eachFileRecurse { modFile ->
 					if (modFile.name.endsWith(".ecal")) {
-						console.println("Found operator: " + modFile.name.take(modFile.name.length() - 5) + ": " +
-								modFile.getText())
-						Registry += [
-								(modFile.name.take(modFile.name.length() - 5)) :
-										shell.parse("{ x, y -> \n ${modFile.getText()} \n }")]
+						console.println("	Found Operator: " + modFile.name.take(modFile.name.length() - 5))
+						Registry.put(
+								(modFile.name.take(modFile.name.length() - 5).toString()),
+								(Closure<String>) shell.evaluate("{ x, y ->"+modFile.getText()+"}"))
 					}
 				}
 			}
 		}
+	}
+	static File addMod(LinkedHashMap operators, String name){
+		File modFolder = new File(modsFolder, name)
+		modFolder.mkdirs()
+		operators.each {
+			def operator = new File(modFolder, (String) it.key + ".ecal")
+			operator.createNewFile()
+			operator.setText((String)it.value)
+		}
+		modFolder
 	}
 
 }

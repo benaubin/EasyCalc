@@ -1,7 +1,6 @@
 package com.bensites.java.EasyCalc
 
 import com.bensites.java.EasyCalc.Util.Console.Console
-
 class Parser {
 
 	final Console console
@@ -71,10 +70,8 @@ class Parser {
 				else
 					return equation[0]
 			} catch (Exception e) {
-				e.printStackTrace()
 				return Double.NaN
 			} catch (StackOverflowError e){
-				e.printStackTrace()
 				return Double.NaN
 			}
 		}

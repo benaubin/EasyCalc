@@ -23,7 +23,6 @@ public class InstallOperators extends JDialog {
 		buttonNO.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e){
-				Main.useDefualtOperators();
 				dispose();
 			}
 		});
