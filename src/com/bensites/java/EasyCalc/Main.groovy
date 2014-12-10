@@ -4,7 +4,6 @@ import com.bensites.java.EasyCalc.GUI.InstallOperators
 import com.bensites.java.EasyCalc.GUI.MainGUI
 import com.bensites.java.EasyCalc.Other.Files
 import com.bensites.java.EasyCalc.Util.Console.*
-import sun.plugin.javascript.navig.Link
 
 /** Main class.
  * This class sets up dependencies, and imports the core operators.
@@ -19,6 +18,7 @@ class Main {
 	static File modsFolder
 	static ArrayList<ArrayList<String>> order;
 	static LinkedHashMap<String,Closure> Registry = [:]
+	static LinkedHashMap<String,LinkedHashMap> meta
 	final static Console console = new Console()
 	static shell = new GroovyShell()
 	public static Parser parser
@@ -91,9 +91,9 @@ class Main {
 	}
 	static String runOperator(String argLeft, String operator, String argRight){
 		try {
-			(String) getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight))
-		}catch (java.lang.NumberFormatException e){
-			(String) getRegistry()[operator](argLeft, argRight)
+			(String) getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight),  meta.get(operator))
+		}catch (NumberFormatException e){
+			(String) getRegistry()[operator](argLeft, argRight, meta.get(operator))
 		}
 	}
 	static void reload(){
@@ -111,7 +111,9 @@ class Main {
 						console.println("	Found Operator: " + modFile.name.take(modFile.name.length() - 5))
 						Registry.put(
 								(modFile.name.take(modFile.name.length() - 5).toString()),
-								(Closure<String>) shell.evaluate("{ x, y ->"+modFile.getText()+"}"))
+								(Closure<String>) shell.evaluate("{ x, y, meta ->"+modFile.getText()+"}"))
+						meta.put(modFile.name.take(modFile.name.length() - 5).toString(),[
+								"file":modFile, "mod":it])
 					}
 				}
 			}

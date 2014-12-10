@@ -3,16 +3,16 @@ package com.bensites.java.EasyCalc.Other
 
 class Files {
     public final static String DefaultOperators = """
-        "+":{ x, y ->
+        "+":{ x, y, meta ->
             x + y
         },
-        "-":{ x, y ->
+        "-":{ x, y, meta ->
             x - y
         },
-        "*":{ x, y ->
+        "*":{ x, y, meta ->
             x * y
         },
-        "/":{ x, y ->
+        "/":{ x, y, meta ->
             x / y
         },
 """
