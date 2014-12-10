@@ -32,15 +32,9 @@ public class MainGUI extends JDialog {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e){
 				dispose();
+				System.exit(0);
 			}
 		});
-
-// call dispose() on ESCAPE
-		contentPane.registerKeyboardAction(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				dispose();
-			}
-		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 	}
 
 	public static void main(String[] args){
