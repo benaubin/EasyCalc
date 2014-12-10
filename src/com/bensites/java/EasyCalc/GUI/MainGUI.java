@@ -1,25 +1,28 @@
-package com.bensites.java.EasyCalc;
+package com.bensites.java.EasyCalc.GUI;
+
+import com.bensites.java.EasyCalc.Main;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 
 public class MainGUI extends JDialog {
 	private JPanel contentPane;
 	private JButton buttonCalculate;
 	private JTextField equationField;
+	private JLabel Answer;
 
 	public MainGUI(){
 		setContentPane(contentPane);
 		setModal(true);
 		getRootPane().setDefaultButton(buttonCalculate);
 
-		buttonCalculate.addActionListener(new ActionListener() {
+		equationField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				if (Main.parser.run(Main.parser.stringToArray(equationField.getText())).toString() != "NaN")
-					equationField.setText(equationField.getText() + " = " +
+				//if (Main.parser.run(Main.parser.stringToArray(equationField.getText())).toString() != "NaN")
+					Answer.setText("= " +
 							Main.parser.run(Main.parser.stringToArray(equationField.getText())).toString());
+				//else Answer.setText("");
 			}
 		});
 
