@@ -25,7 +25,7 @@ class Parser {
 	def containsGrouping(ArrayList<String> equation){
 		boolean containsGrouping = false
 		for(it in equation) {
-			if(it.toString().endsWith("(") || it.toString().endsWith(")")) containsGrouping = true
+			if(it.toString().startsWith("(") || it.toString().endsWith(")")) containsGrouping = true
 		}
 		containsGrouping
 	}
@@ -40,21 +40,29 @@ class Parser {
 	}
 	def run(ArrayList<String> equation) {
 		if (containsGrouping(equation)) {
+			for (i in 0..(equation.size() - 1)) {
+				def it = equation[i]
+				int openGroups
+				int openIndex
+				int closeIndex
+				if (it.startsWith("(")) {
+					openGroups++
+					if (!openIndex) openIndex = i
+				} else if (it.endsWith(")")) {
+					if (openGroups == 1) {
+						if (!closeIndex) closeIndex = i
+					}
+						openGroups--
+				}
+			}
 			
 		} else {
 			try {
 				Main.order.each { level ->
 					for (i in 0..equation.size() - 1)
 						if (level.contains(equation[i])) {
-							try {
-								String answer = (String) Main.getRegistry()
-										.get(equation[i])((Double.parseDouble(equation[i - 1])),
-										Double.parseDouble(equation[i + 1]))
-								for (a in 1..3) equation.remove(i - 1); equation.add(i - 1, answer);
-							} catch (MissingMethodException e) {
-								Main.reload()
-							}
-
+							def answer = Main.runOperator(equation[i - 1],equation[i],equation[i + 1])
+							for (a in 1..3) equation.remove(i - 1); equation.add(i - 1, answer);
 						}
 				}
 
@@ -63,6 +71,10 @@ class Parser {
 				else
 					return equation[0]
 			} catch (Exception e) {
+				e.printStackTrace()
+				return Double.NaN
+			} catch (StackOverflowError e){
+				e.printStackTrace()
 				return Double.NaN
 			}
 		}

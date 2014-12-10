@@ -1,5 +1,8 @@
 package com.bensites.java.EasyCalc
 
+import com.bensites.java.EasyCalc.GUI.InstallOperators
+import com.bensites.java.EasyCalc.GUI.MainGUI
+import com.bensites.java.EasyCalc.Other.Files
 import com.bensites.java.EasyCalc.Util.Console.*
 /** Main class.
  * This class sets up dependencies, and imports the core operators.
@@ -7,17 +10,26 @@ import com.bensites.java.EasyCalc.Util.Console.*
  * @author Ben
  */
 class Main {
-	final static operatorsFile = new File("operators.ecal")
-	final static orderFile = new File("order.ecal")
+
+	static File easyCalcFolder = new File("EasyCalc/")
+	static File operatorsFile
+	static File orderFile
+	static File modsFolder
 	static ArrayList<ArrayList<String>> order;
 	static LinkedHashMap<String,Closure> Registry = [:]
 	final static Console console = new Console()
 	static shell = new GroovyShell()
 	public static Parser parser
 	static main(args) {
+		console.println "Your OS:" + System.getProperty("os.name")
+		if(System.getProperty("os.name") == "Mac OS X")
+			easyCalcFolder = new File("${System.getProperty("user.home")}/Library/Application Support/EasyCalc")
+		else console.println "EasyCalc has not been optimised for your operating system. Please raise a GitHub Issue"
+		if(!easyCalcFolder.exists()) easyCalcFolder.mkdirs()
 		printTitle(console)
+
 		console.println "Welcome to EasyCal"
-		console.println "Written by everyone, supported by Ben of bensites.com"
+		console.println "Written by Ben of bensites.com"
 		def GUIThread = new Thread({
 			MainGUI mainGUI = new MainGUI()
 			mainGUI.pack()
@@ -28,55 +40,28 @@ class Main {
 		console.print(loadingBar,true,true)
 		parser = new Parser(console)
 
-		//Make sure files exist.
+		//Create files
+		operatorsFile = new File(easyCalcFolder, "operators.ecal")
+		orderFile = new File(easyCalcFolder, "order.ecal")
+		modsFolder = new File(easyCalcFolder, "mods")
 		if(!operatorsFile.exists()){
 			operatorsFile.createNewFile()
-			operatorsFile.setText("""[
-        "+":{ x, y ->
-            x + y
-        },
-        "-":{ x, y ->
-            x - y
-        },
-        "*":{ x, y ->
-            x * y
-        },
-        "/":{ x, y ->
-            x / y
-        },
-        "^":{ double x, double y ->
-            java.lang.Math.pow(x, y)
-        },
-        "roundTo":{ double value, double places ->
-            if (places < 0) throw new IllegalArgumentException();
-            def s = new StringBuffer()
-            if (places > 0){
-                s.append(".")
-                for(i in 1..places)
-                    s.append("#")
-            }
-            com.bensites.java.EasyCalc.Main.println(s.toString())
-            def df = new java.text.DecimalFormat("#" + s.toString())
-            Double.valueOf(df.format(value))
-        },
-]""")
+			InstallOperators installOperators = new InstallOperators()
+			installOperators.pack()
+			installOperators.setVisible(true)
 		}
 		if(!orderFile.exists()){
 			orderFile.createNewFile()
-			orderFile.setText("""[
-        ["^"],
-        ["*","/"],
-        ["+","-"],
-        ["roundTo"]
-]""")
+			orderFile.setText(Files.Order)
+		}
+		if(!modsFolder.exists()){
+			modsFolder.mkdirs()
 		}
 		loadingBar.progress()
 		//Load all operators
-		Registry = shell.evaluate(operatorsFile.getText())
-
+		reload()
 		loadingBar.progress()
-		//Do things like order operations, and finish up
-		order = ((ArrayList<ArrayList<String>>)shell.evaluate(orderFile.getText()))
+		//Finish up
 		loadingBar.progress()
 		//Start the program
 		GUIThread.start()
@@ -98,10 +83,41 @@ class Main {
 		console.println "                   __/ |    "
 		console.println "                  |___/   "
 	}
-	static void reload(){
-		Registry = shell.evaluate(operatorsFile.getText())
-		order = ((ArrayList<ArrayList<String>>)shell.evaluate(orderFile.getText()))
-	}
 
+	static void useSuggestedOperators(){
+		operatorsFile.setText(Files.DefaultOperators + Files.Suggested)
+	}
+	static void useDefualtOperators(){
+		operatorsFile.setText(Files.DefaultOperators)
+	}
+	static String runOperator(String argLeft, String operator, String argRight){
+		try {
+			(String) getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight))
+		}catch (java.lang.NumberFormatException e){
+			(String) getRegistry()[operator](argLeft, argRight)
+		}
+	}
+	static void reload(){
+		println("Reloading.")
+		load()
+	}
+	private static void load(){
+		Registry = shell.evaluate("["+operatorsFile.getText()+"]")
+		order = (shell.evaluate("[\n${orderFile.getText()}\n]"))
+		modsFolder.eachFileRecurse {
+			if(it.isDirectory()){
+				console.println "Loading mod ${it.name}"
+				it.eachFileRecurse { modFile ->
+					if (modFile.name.endsWith(".ecal")) {
+						console.println("Found operator: " + modFile.name.take(modFile.name.length() - 5) + ": " +
+								modFile.getText())
+						Registry += [
+								(modFile.name.take(modFile.name.length() - 5)) :
+										shell.parse("{ x, y -> \n ${modFile.getText()} \n }")]
+					}
+				}
+			}
+		}
+	}
 
 }

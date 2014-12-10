@@ -1,4 +1,8 @@
-[
+package com.bensites.java.EasyCalc.Other
+
+
+class Files {
+    public final static String DefaultOperators = """
         "+":{ x, y ->
             x + y
         },
@@ -11,6 +15,14 @@
         "/":{ x, y ->
             x / y
         },
+"""
+    public final static String Order = """
+        ["^","rt"],
+        ["*","/"],
+        ["+","-"],
+        ["roundTo"]
+"""
+    public final static String Suggested = """
         "^":{ double x, double y ->
             java.lang.Math.pow(x, y)
         },
@@ -38,4 +50,5 @@
                 return Double.NaN
             }
         },
-]
+"""
+}
