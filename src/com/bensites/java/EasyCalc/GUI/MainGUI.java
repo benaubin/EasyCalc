@@ -12,13 +12,10 @@ public class MainGUI extends JDialog implements KeyListener {
 	private JLabel Answer;
 	public void keyTyped(KeyEvent e) {
 		String equation = equationField.getText() + e.getKeyChar();
-		if (Main.parser.run(Main.parser.stringToArray(equation)).toString() != "NaN")
-			Answer.setText("= " +
-					Main.parser.run(Main.parser.stringToArray(equation)).toString());
+		String answer = Main.parser.run(Main.parser.stringToArray(equation)).toString();
+		if (!(answer.equals("NaN") || equationField.getText().equals("") || equation.equals("= ")))
+			Answer.setText("= " + answer);
 		else {
-			Answer.setText("");
-		}
-		if (equation.equals("")){
 			Answer.setText("");
 		}
 	}
