@@ -1,7 +1,6 @@
 package com.bensites.java.EasyCalc
 
-import com.bensites.java.EasyCalc.GUI.InstallOperators
-import com.bensites.java.EasyCalc.GUI.MainGUI
+import com.bensites.java.EasyCalc.GUI.*
 import com.bensites.java.EasyCalc.Other.Files
 import com.bensites.java.EasyCalc.Util.Console.*
 
@@ -108,16 +107,20 @@ class Main {
 				console.println "Loading mod ${it.name}"
 				it.eachFileRecurse { modFile ->
 					if (modFile.name.endsWith(".ecal")) {
-						console.println("	Found Operator: " + modFile.name.take(modFile.name.length() - 5))
+						console.println("	Found Operator: " + removeEcal(modFile.name))
 						Registry.put(
-								(modFile.name.take(modFile.name.length() - 5).toString()),
+								removeEcal(modFile.name),
 								(Closure<String>) shell.evaluate("{ x, y, meta ->"+modFile.getText()+"}"))
-						meta.put(modFile.name.take(modFile.name.length() - 5).toString(),[
+						meta.put(removeEcal(modFile.name),[
 								"file":modFile, "mod":it])
+
 					}
 				}
 			}
 		}
+	}
+	static String removeEcal(String fileName){
+		fileName.take(fileName.length() - 5)
 	}
 	static File addMod(LinkedHashMap operators, String name){
 		File modFolder = new File(modsFolder, name)
@@ -128,6 +131,13 @@ class Main {
 			operator.setText((String)it.value)
 		}
 		modFolder
+	}
+
+	static String getOrderFileText(){
+		orderFile.getText()
+	}
+	static void setOrderFileText(String){
+		orderFile.text = String
 	}
 
 }
