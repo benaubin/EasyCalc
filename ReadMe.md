@@ -8,36 +8,27 @@ To use, just start up the program, wait just a few seconds for it to load, and t
 
 Core Operators
 ------------------
-All operators in EasyCalc are modular, but in order to start you off, we give you the following operators listed below. If you want more, take the operators.ecal, and the order.ecal file from this repository, and add it to your download's runtime directory.
+All operators in EasyCalc are modular, but in order to start you off, we give you the following operators listed below.
 
 Operator| Function
 ----------	| ----------
-^		| Finds _ to the power of _
 *		| Multiplies _ by _
 /		| Divides _ by _
 +		| Adds _ to _
 -		| Finds the differnce of _ and _
-roundTo	| Rounds _ to _ decimals
+
+If you want, you can choose to add the operators below at the first run.
+
+Operator	|Function
+----------	|----------
+rt		| Finds the _ root of _
+^		| Finds _ to the power of _
+roundTo	| Founds _ to _ places
+
 
 Installing Operators
 -----------------------
-To install operators, it's pretty easy. You should have been given a folder of operators (.ecal files) to install. If you do not have one, you might want to create your own. Scroll down this page to learn how. Just drag the file in
-
-In order to add an operation to run, you have to decide in what order you want it to run. If you want it to run during multiplication and division, place it in that list..
-~~~groovy
-[
-        ["^"],
-        ["*","/","potato"],
-        ["+","-"],
-        ["roundTo"]
-]
-~~~
-So, you can test is out, and see that it works.
-~~~json
-Equation: 4 potato 7
-Answer: 18.0
-~~~
-
+To install operators, it's pretty easy. You should have been given a folder of operators to install. If you do not have one, you might want to create your own. Scroll down this page to learn how. But, if you have one, just drag the file into your EasyCalc folder. After that, add the operators to your order.ecal file.
 
 Contributing
 --------------
@@ -50,69 +41,5 @@ Other things to keep in mind:
 
 Making Operators
 ---------------------
-Making operators is easy. All you have to do is write about 4 lines of code.
-Let's open Operators.ecal. You should see something that looks like this sample of code.
-~~~groovy
-[
-        "+":{ x, y ->
-            x + y
-        },
-        "-":{ x, y ->
-            x - y
-        },
-        "*":{ x, y ->
-            x * y
-        },
-        "/":{ x, y ->
-            x / y
-        },
-        "^":{ double x, double y ->
-            java.lang.Math.pow(x, y)
-        },...
-]
-~~~
-If you have every worked with Groovy before, you might recognise this. It is a simple HashMap, that will be interpreted at runtime.
-It's easy to make your own operator, just add this to the end of the file:
-~~~groovy
- "potato":{ x, y ->
-            
-        },
-~~~
-You can notice that you are passed in two arguments, both of which are doubles, but groovy does not make you write that. Instead, you can just type *x,y ->*.
-Let's make potato add y times 2 to x.
-~~~groovy
- "potato":{ x, y ->
-            y * 2 + x
-        },
-~~~
-We just added  y * 2 + x. Groovy evaluates using Pemdas, so it's pretty easy to write one line of code. The final line of code is always returned in Groovy, so you don't have to type return, or one of those pesky simicolons. Now, in order for the program to run this operator in the right order, we need to add it to order.ecal. It looks something like this:
-~~~groovy
-[
-        ["^"],
-        ["*","/"],
-        ["+","-"],
-        ["roundTo"]
-]
-~~~
-Order.ecal is basically an array of arrays of operators. During parsing, the operators in the first array is done from left to right, then the second, and so on. That means if we want our potato operator to evaluate first, then we can put it on top.
-~~~groovy
-[
-	["potato"],
-  	["^"],
-  	["*","/"],
-  	["+","-"],
-  	["roundTo"]
-]
-~~~
-Now, when we run the program, potato is evaluted first, so 7 potato 7 is 18.
-~~~json
-Equation: 4 potato 7
-Answer: 18.0
-~~~
-That is correct, since 7 * 2 = 14, since it takes the second one, multiplies it by 2, and adds the first one. Now, let's try adding 1 to that.
-~~~json
-Equation: 4 potato 7 + 1
-Answer: 19.0
-~~~
-That is also correct, since in the order of operations we made, potato goes before '+'.
-You just made your own operator! Do what ever you want with it, even sell it, all you have to do is make sure that your end user can look at the code, but also edit, sell and redistribute it. Make sure to distribute it with a comma at the end, or it might break.
+Making operators is easy. All you have to do is write about 1 line of code.
+
