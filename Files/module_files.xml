@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_files" default="compile.module.files">
+  <dirname property="module.files.basedir" file="${ant.file.module_files}"/>
+  
+  <property name="module.jdk.home.files" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.files" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.files" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.files" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="files.output.dir" value="${module.files.basedir}/../out/production/Files"/>
+  <property name="files.testoutput.dir" value="${module.files.basedir}/../out/test/Files"/>
+  
+  <path id="files.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="files.module.production.classpath">
+    <path refid="${module.jdk.classpath.files}"/>
+    <path refid="library.groovy-2.4.0.beta-3.classpath"/>
+  </path>
+  
+  <path id="files.runtime.production.module.classpath">
+    <pathelement location="${files.output.dir}"/>
+    <path refid="library.groovy-2.4.0.beta-3.classpath"/>
+  </path>
+  
+  <path id="files.module.classpath">
+    <path refid="${module.jdk.classpath.files}"/>
+    <pathelement location="${files.output.dir}"/>
+    <path refid="library.groovy-2.4.0.beta-3.classpath"/>
+  </path>
+  
+  <path id="files.runtime.module.classpath">
+    <pathelement location="${files.testoutput.dir}"/>
+    <pathelement location="${files.output.dir}"/>
+    <path refid="library.groovy-2.4.0.beta-3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.files">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.files">
+    <patternset refid="excluded.from.module.files"/>
+  </patternset>
+  
+  
+  <target name="compile.module.files" depends="compile.module.files.production,compile.module.files.tests" description="Compile module Files"/>
+  
+  <target name="compile.module.files.production" depends="register.custom.compilers" description="Compile module Files; production classes"/>
+  
+  <target name="compile.module.files.tests" depends="register.custom.compilers,compile.module.files.production" description="compile module Files; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.files" description="cleanup module">
+    <delete dir="${files.output.dir}"/>
+    <delete dir="${files.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,6 +1,7 @@
 
 version = '1.0'
 apply plugin: 'groovy'
+apply plugin: 'idea'
 apply plugin: 'application'
 
 def mainClass = "com.bensites.java.EasyCalc.Main"
@@ -11,6 +12,7 @@ repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    flatDir dirs: "${rootDir}/lib"
 }
 sourceSets {
     main {
@@ -24,12 +26,13 @@ sourceSets {
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.7'
+    //Groovy
     compile 'org.codehaus.groovy:groovy-all:2.3.8'
+    //Idea Forms
+    compile name: 'forms_rt', version: '13.1.1'
     // Declare the dependency for your favourite test framework you want to use in your tests.
-    // TestNG is also supported by the Gradle Test task. Just change the
-    // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
-    // 'test.useTestNG()' to your build script.
-    testCompile "junit:junit:4.11"
+    // testCompile "junit:junit:4.11"
+
 }
 
 jar {
