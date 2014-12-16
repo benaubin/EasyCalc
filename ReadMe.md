@@ -23,7 +23,6 @@ Operator	|Function
 ----------	|----------
 rt		| Finds the _ root of _
 ^		| Finds _ to the power of _
-roundTo	| Founds _ to _ places
 
 
 Installing Operators
@@ -35,11 +34,22 @@ Contributing
 By contributing, you are giving us your code under an MIT license. If you don't like that, don't code for us.
 Other things to keep in mind:
 - Keep your code short, efficient, & readable.
-- Commit often
+- Commit often while coding.
 - Keep changes that might break the program in a separate branch, if you are a core developer
-- Do not add core operators, instead, add operators to the operators.ecal file.
+- Do not add core operators, instead, add operators to the recommended 
 
-Making Operators
----------------------
+Modding EasyCalc
+----------------------
 Making operators is easy. All you have to do is write about 1 line of code.
+First, open up your EasyCalc dirrectory, on a Mac it's at ~/Library/EasyCalc, and on all other devices, you will see it where you ran the program.
 
+Create a new directory in the /mods/ folder. Name it the name of your mod. Then create a new file. Call it by the name you want it to run with ("+" for 1 + 1, or "addTo" for 6 addTo 3), and then .ecal (for a "add" operator, call it "add.ecal").
+
+Then, open up the file in your favorite text editor (I reccomend Sumblime Text), and start coding Groovy. 'x' is the text on the left, and 'y' is the text on the right. If possable, they are already converted to a double, if not, they are strings. You should return a double, if possable. If there is an Error, just return NaN, and EasyCalc will know what you mean. All execption handling should be taken care of,. Any Groovy or Java will work.
+
+Importing code will not work.
+
+Example "add" operator:
+~~~groovy
+return x + y
+~~~
