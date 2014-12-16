@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Easycalc by penne12</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Easycalc</h1>
+        <h2>A modular command line calculator</h2>
+        <a href="https://github.com/penne12/EasyCalc" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="easycalc" class="anchor" href="#easycalc" aria-hidden="true"><span class="octicon octicon-link"></span></a>EasyCalc</h1>
+
+<h6>
+<a id="the-modular-calculator-built-for-developers" class="anchor" href="#the-modular-calculator-built-for-developers" aria-hidden="true"><span class="octicon octicon-link"></span></a>The modular calculator built for developers.</h6>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To use, just start up the program, wait just a few seconds for it to load, and type in a problem. Easy Calc follows order of operations, so you don't have to think.</p>
+
+<h2>
+<a id="core-operators" class="anchor" href="#core-operators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Core Operators</h2>
+
+<p>All operators in EasyCalc are modular, but in order to start you off, we give you the following operators listed below.</p>
+
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>Multiplies _ by _</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Divides _ by _</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Adds _ to _</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Finds the differnce of _ and _</td>
+</tr>
+</tbody>
+</table>
+
+<p>If you want, you can choose to add the operators below at the first run.</p>
+
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rt</td>
+<td>Finds the _ root of _</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Finds _ to the power of _</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="installing-operators" class="anchor" href="#installing-operators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing Operators</h2>
+
+<p>To install operators, it's pretty easy. You should have been given a folder of operators to install. If you do not have one, you might want to create your own. Scroll down this page to learn how. But, if you have one, just drag the file into your EasyCalc folder. After that, add the operators to your order.ecal file.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>By contributing, you are giving us your code under an MIT license. If you don't like that, don't code for us.
+Other things to keep in mind:</p>
+
+<ul>
+<li>Keep your code short, efficient, &amp; readable.</li>
+<li>Commit often while coding.</li>
+<li>Keep changes that might break the program in a separate branch, if you are a core developer</li>
+<li>Do not add core operators, instead, add operators to the recommended </li>
+</ul>
+
+<h2>
+<a id="modding-easycalc" class="anchor" href="#modding-easycalc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modding EasyCalc</h2>
+
+<p>Making operators is easy. All you have to do is write about 1 line of code.
+First, open up your EasyCalc dirrectory, on a Mac it's at ~/Library/EasyCalc, and on all other devices, you will see it where you ran the program.</p>
+
+<p>Create a new directory in the /mods/ folder. Name it the name of your mod. Then create a new file. Call it by the name you want it to run with ("+" for 1 + 1, or "addTo" for 6 addTo 3), and then .ecal (for a "add" operator, call it "add.ecal").</p>
+
+<p>Then, open up the file in your favorite text editor (I reccomend Sumblime Text), and start coding Groovy. 'x' is the text on the left, and 'y' is the text on the right. If possable, they are already converted to a double, if not, they are strings. You should return a double, if possable. If there is an Error, just return NaN, and EasyCalc will know what you mean. All execption handling should be taken care of,. Any Groovy or Java will work.</p>
+
+<p>Importing code will not work.</p>
+
+<p>Example "add" operator:</p>
+
+<div class="highlight highlight-groovy"><pre><span class="pl-k">return</span> x <span class="pl-k">+</span> y</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/penne12/EasyCalc/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/penne12/EasyCalc/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/penne12/EasyCalc"></a> is maintained by <a href="https://github.com/penne12">penne12</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
