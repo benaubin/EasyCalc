@@ -1,5 +1,7 @@
 package com.bensites.java.EasyCalc.Other
 
+import com.bensites.java.EasyCalc.Main
+
 
 class Files {
     public final static String DefaultOperators = """
@@ -16,24 +18,34 @@ class Files {
             x / y
         },
 """
+    static main(args) {
+        File addonsFolder =
+                new File(System.getProperty("user.home")+"/Library/Application Support/EasyCalc/mods/EasyCalc Addons/")
+        println("public final static LinkedHashMap<String, String> Suggested = [")
+        addonsFolder.eachFile {
+            println("\""+Main.removeEcal(it.name) + "\":\"\"\"" + it.text + "\"\"\",")
+        }
+        println("]")
+        println("""
+
+""")
+        println("public final static String Order = \"\"\"")
+        println(new File(System.getProperty("user.home")+ "/Library/Application Support/EasyCalc/order.ecal").text)
+        println("\"\"\"")
+        println("""
+
+""")
+    }
+
+    //Copy paste below before a release
+    public final static LinkedHashMap<String, String> Suggested = [
+        "^":"""java.lang.Math.pow(x, y)""",
+        "rt":"""java.lang.Math.pow(x, 1 / y)""",
+    ]
     public final static String Order = """
         ["^","rt"],
         ["*","/"],
         ["+","-"],
-        ["roundTo"]
-"""
-    public final static LinkedHashMap<String, String> Suggested = [
-        "^":"""java.lang.Math.pow(x, y)""",
-        "rt":"""if(x < 0){
-                return Double.POSITIVE_INFINITY
-            } else if (x == 1){
-                return number
-            } else if (x == 2){
-                return java.lang.Math.sqrt(y)
-            } else if (x == 3){
-                return java.lang.Math.cbrt(y)
-            } else {
-                return Double.NaN
-            }""",
-    ]
+        ["Other"]
+    """
 }
