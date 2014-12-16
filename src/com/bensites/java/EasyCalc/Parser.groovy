@@ -39,22 +39,9 @@ class Parser {
 	}
 	def run(ArrayList<String> equation) {
 		if (containsGrouping(equation)) {
-			for (i in 0..(equation.size() - 1)) {
-				def it = equation[i]
-				int openGroups
-				int openIndex
-				int closeIndex
-				if (it.startsWith("(")) {
-					openGroups++
-					if (!openIndex) openIndex = i
-				} else if (it.endsWith(")")) {
-					if (openGroups == 1) {
-						if (!closeIndex) closeIndex = i
-					}
-						openGroups--
-				}
+			equation.each {
+
 			}
-			
 		} else {
 			try{
 				Main.order.each { level ->
@@ -76,4 +63,5 @@ class Parser {
 			}
 		}
 	}
+	private beforeParse = [Closure]
 }
