@@ -28,6 +28,7 @@ public class MainGUI extends JDialog implements KeyListener {
 
 
 	public MainGUI(){
+
 		setContentPane(contentPane);
 		setModal(true);
 		equationField.addKeyListener(this);
@@ -39,12 +40,13 @@ public class MainGUI extends JDialog implements KeyListener {
 				System.exit(0);
 			}
 		});
+
 	}
 
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		MainGUI dialog = new MainGUI();
 		dialog.pack();
 		dialog.setVisible(true);
 		System.exit(0);
-	}
+	}*/
 }
