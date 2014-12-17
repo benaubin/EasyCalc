@@ -12,10 +12,14 @@ public class MainGUI extends JDialog implements KeyListener {
 	private JLabel Answer;
 	public void keyTyped(KeyEvent e) {
 		String equation = equationField.getText() + e.getKeyChar();
-		String answer = Main.parser.run(Main.parser.stringToArray(equation)).toString();
-		if (!(answer.equals("NaN") || equationField.getText().equals("") || equation.equals("= ")))
-			Answer.setText("= " + answer);
-		else {
+		try {
+			String answer = Main.parser.run(Main.parser.stringToArray(equation)).toString();
+			if (!(answer.equals("NaN") || equationField.getText().equals("") || equation.equals("= ")))
+				Answer.setText("= " + answer);
+			else {
+				Answer.setText("");
+			}
+		} catch(NullPointerException error) {
 			Answer.setText("");
 		}
 	}
@@ -42,11 +46,4 @@ public class MainGUI extends JDialog implements KeyListener {
 		});
 
 	}
-
-	/*public static void main(String[] args){
-		MainGUI dialog = new MainGUI();
-		dialog.pack();
-		dialog.setVisible(true);
-		System.exit(0);
-	}*/
 }
