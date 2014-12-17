@@ -24,14 +24,6 @@ class Parser {
 		return array
 	}
 
-	def containsGrouping(ArrayList<String> equation) {
-		boolean containsGrouping = false
-		for (it in equation) {
-			if (it.toString().startsWith("(") || it.toString().endsWith(")")) containsGrouping = true
-		}
-		containsGrouping
-	}
-
 	def removeFromString(int index, String string) {
 		def t = new StringBuffer()
 		t.append(string)
@@ -43,7 +35,15 @@ class Parser {
 	}
 
 	def run(ArrayList<String> equation) {
-		try {
+		def s = new StringBuilder()
+		if(equation[0] == "groovy"){
+			for(i in 0..equation.size()-2){
+				s.append(equation[i]+" ")
+			}
+			Main.shell.evaluate()
+		}
+		try
+
 			Main.order.each { level ->
 				for (i in 0..equation.size() - 1)
 					if ((level.contains(equation[i])) ||

@@ -89,11 +89,17 @@ class Main {
 		addMod(Files.Suggested, "EasyCalc Addons")
 	}
 	static String runOperator(String argLeft, String operator, String argRight){
+		def answer
 		try {
-			(String) getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight),  meta.get(operator))
+			answer = getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight),  meta.get(operator))
 		}catch (NumberFormatException e){
-			(String) getRegistry()[operator](argLeft, argRight, meta.get(operator))
+			answer = getRegistry()[operator](argLeft, argRight, meta.get(operator))
 		}
+		if (answer instanceof LinkedHashMap) {
+			meta.put(operator, (LinkedHashMap) answer["meta"])
+			return answer["answer"]
+		} else
+			return (String) answer
 	}
 	static void reload(){
 		println("Reloading.")
