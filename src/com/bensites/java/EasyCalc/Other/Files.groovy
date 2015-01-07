@@ -39,13 +39,18 @@ class Files {
 
     //Copy paste below before a release
     public final static LinkedHashMap<String, String> Suggested = [
-        "^":"""java.lang.Math.pow(x, y)""",
-        "rt":"""java.lang.Math.pow(x, 1 / y)""",
+            "%in":"""return x * 100 / y""",
+            "^":"""java.lang.Math.pow(x, y)""",
+            "PPMin":"""return x * 1000000 / y""",
+            "rt":"""java.lang.Math.pow(x, 1 / y)""",
     ]
+
+
+
     public final static String Order = """
-        ["^","rt"],
-        ["*","/"],
-        ["+","-"],
-        ["Other"]
-    """
+["^","rt"],
+["*","/"],
+["+","-"],
+["Other"]
+"""
 }
