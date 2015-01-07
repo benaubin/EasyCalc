@@ -42,7 +42,7 @@ class Parser {
 			}
 			Main.shell.evaluate()
 		}
-		try
+		try {
 
 			Main.order.each { level ->
 				for (i in 0..equation.size() - 1)
