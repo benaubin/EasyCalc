@@ -11,7 +11,13 @@ public class MainGUI extends JDialog implements KeyListener {
 	private JTextField equationField;
 	private JLabel Answer;
 	public void keyTyped(KeyEvent e) {
-		String equation = equationField.getText() + e.getKeyChar();
+
+	}
+	public void keyPressed(KeyEvent e) {
+
+	}
+	public void keyReleased(KeyEvent e) {
+		String equation = equationField.getText();
 		try {
 			String answer = Main.parser.run(Main.parser.stringToArray(equation)).toString();
 			if (!(answer.equals("NaN") || equationField.getText().equals("") || equation.equals("= ")))
@@ -22,12 +28,6 @@ public class MainGUI extends JDialog implements KeyListener {
 		} catch(NullPointerException error) {
 			Answer.setText("");
 		}
-	}
-	public void keyPressed(KeyEvent e) {
-
-	}
-	public void keyReleased(KeyEvent e) {
-
 	}
 
 
