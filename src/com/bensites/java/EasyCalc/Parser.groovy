@@ -9,7 +9,7 @@ class Parser {
 		console = c
 	}
 
-	ArrayList<String> stringToArray(String s) {
+	static ArrayList<String> stringToArray(String s) {
 		StringBuilder temp = new StringBuilder()
 		def array = []
 		s.toCharArray().each {
@@ -24,26 +24,8 @@ class Parser {
 		return array
 	}
 
-	def removeFromString(int index, String string) {
-		def t = new StringBuffer()
-		t.append(string)
-		if (index != -1)
-			t.deleteCharAt(index)
-		else
-			t.deleteCharAt(t.length() - 1)
-		t.toString()
-	}
-
 	def run(ArrayList<String> equation) {
-		def s = new StringBuilder()
-		if(equation[0] == "groovy"){
-			for(i in 0..equation.size()-2){
-				s.append(equation[i]+" ")
-			}
-			Main.shell.evaluate()
-		}
 		try {
-
 			Main.order.each { level ->
 				for (i in 0..equation.size() - 1)
 					if ((level.contains(equation[i])) ||
