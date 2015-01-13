@@ -10,6 +10,8 @@ public class MainGUI extends JDialog implements KeyListener {
 	private JPanel contentPane;
 	private JTextField equationField;
 	private JLabel Answer;
+	private JButton optionsButton;
+
 	public void keyTyped(KeyEvent e) {
 
 	}
@@ -32,7 +34,7 @@ public class MainGUI extends JDialog implements KeyListener {
 
 
 	public MainGUI(){
-
+		setTitle("EasyCalc v" + Main.version());
 		setContentPane(contentPane);
 		setModal(true);
 		equationField.addKeyListener(this);
