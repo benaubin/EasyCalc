@@ -10,11 +10,23 @@ import com.bensites.java.EasyCalc.Util.Console.*
  * @author Ben
  */
 class Main {
-
+	/**
+	 * Major,Minor,Fix
+	 *
+	 * Major: Noticable syntax changes, GUI changes, File Storage Changes, etc.
+	 * Minor: Operator Additions
+	 * Fix: Small fixes
+	 *
+	 * Major: Triggers a file deletion and reinstallation
+	 * Minor: Asks user to trigger an operators installer
+	 * Fix: Does nothing
+	 */
+	static final version = ["1","2","0"]
 	static File easyCalcFolder = new File("EasyCalc/")
 	static File operatorsFile
 	static File orderFile
 	static File modsFolder
+	static File versionFile
 	static ArrayList<ArrayList<String>> order = []
 	static LinkedHashMap<String,Closure> Registry = [:]
 	static LinkedHashMap<String,LinkedHashMap> meta = [:]
@@ -41,15 +53,17 @@ class Main {
 		parser = new Parser(console)
 
 		//Create files
+		if(updatedMajor()){
+			easyCalcFolder.deleteDir()
+			easyCalcFolder.mkdirs()
+		}
 		operatorsFile = new File(easyCalcFolder, "operators.ecal")
 		orderFile = new File(easyCalcFolder, "order.ecal")
 		modsFolder = new File(easyCalcFolder, "mods")
+		versionFile = new File(easyCalcFolder, "version.ecal")
 		if(!operatorsFile.exists()){
 			operatorsFile.createNewFile()
 			operatorsFile.setText(Files.DefaultOperators)
-			InstallOperators installOperators = new InstallOperators()
-			installOperators.pack()
-			installOperators.setVisible(true)
 		}
 		if(!orderFile.exists()){
 			orderFile.createNewFile()
@@ -60,9 +74,15 @@ class Main {
 		}
 		loadingBar.progress()
 		//Load all operators
-		reload()
+		load()
 		loadingBar.progress()
-		//Finish up
+		if(updatedMinor()){
+			versionFile.createNewFile()
+			versionFile.text = version.join(".")
+			InstallOperators installOperators = new InstallOperators()
+			installOperators.pack()
+			installOperators.setVisible(true)
+		}
 		loadingBar.progress()
 		//Start the program
 		GUIThread.start()
@@ -91,7 +111,7 @@ class Main {
 	static String runOperator(String argLeft, String operator, String argRight){
 		def answer
 		try {
-			answer = getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight),  meta.get(operator))
+			answer = getRegistry()[operator](Double.parseDouble(argLeft), Double.parseDouble(argRight), meta.get(operator))
 		}catch (NumberFormatException e){
 			answer = getRegistry()[operator](argLeft, argRight, meta.get(operator))
 		}
@@ -102,7 +122,7 @@ class Main {
 			return (String) answer
 	}
 	static void reload(){
-		println("Reloading.")
+		console.println("Reloading")
 		load()
 	}
 	private static void load(){
@@ -142,8 +162,16 @@ class Main {
 	static String getOrderFileText(){
 		orderFile.getText()
 	}
-	static void setOrderFileText(String){
-		orderFile.text = String
+	static void setOrderFileText(String s){
+		orderFile.text = s
 	}
-
+	static boolean updatedMinor(){
+		!versionFile.exists() || !versionFile.text.startsWith([version[0],version[1]].join("."))
+	}
+	static boolean updatedMajor(){
+		!versionFile.exists() || !versionFile.text.startsWith([version[0],version[1]].join("."))
+	}
+	static String version(){
+		version.join(".")
+	}
 }
