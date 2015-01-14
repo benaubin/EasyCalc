@@ -1,6 +1,7 @@
 package com.bensites.java.EasyCalc
 
 import com.bensites.java.EasyCalc.GUI.*
+import com.bensites.java.EasyCalc.Other.ECalMod
 import com.bensites.java.EasyCalc.Other.Files
 import com.bensites.java.EasyCalc.Util.Console.*
 
@@ -51,12 +52,7 @@ class Main {
 		def loadingBar = new ProgressBar(console, loadingSteps)
 		console.print(loadingBar,true,true)
 		parser = new Parser(console)
-
 		//Create files
-		if(updatedMajor()){
-			easyCalcFolder.deleteDir()
-			easyCalcFolder.mkdirs()
-		}
 		operatorsFile = new File(easyCalcFolder, "operators.ecal")
 		orderFile = new File(easyCalcFolder, "order.ecal")
 		modsFolder = new File(easyCalcFolder, "mods")
@@ -130,20 +126,14 @@ class Main {
 		order = (shell.evaluate("[\n${orderFile.getText()}\n]"))
 		modsFolder.eachFileRecurse {
 			if(it.isDirectory()){
-				console.println "Loading mod ${it.name}"
-				it.eachFileRecurse { modFile ->
-					if (modFile.name.endsWith(".ecal")) {
-						console.println("	Found Operator: " + removeEcal(modFile.name))
-						Registry.put(
-								removeEcal(modFile.name),
-								(Closure<String>) shell.evaluate("{ x, y, meta ->"+modFile.getText()+"}"))
-						meta.put(removeEcal(modFile.name),[
-								"file":modFile, "mod":it])
-
-					}
-				}
+				new ECalMod(it)
 			}
 		}
+	}
+	public static void registerOperator(ECalMod mod, File operator){
+		shell.evaluate("{ x, y, meta ->"+operator.getText()+"}")
+		meta.put(removeEcal(operator.name),[
+				"file":operator, "mod":mod])
 	}
 	static String removeEcal(String fileName){
 		fileName.take(fileName.length() - 5)
@@ -169,7 +159,7 @@ class Main {
 		!versionFile.exists() || !versionFile.text.startsWith([version[0],version[1]].join("."))
 	}
 	static boolean updatedMajor(){
-		!versionFile.exists() || !versionFile.text.startsWith([version[0],version[1]].join("."))
+		null == versionFile || !versionFile.exists() || !versionFile.text.startsWith([version[0],version[1]].join("."))
 	}
 	static String version(){
 		version.join(".")

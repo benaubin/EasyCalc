@@ -34,7 +34,11 @@ class Files {
         println("\"\"\"")
         println("""
 
+
 """)
+        println("""public final static String modinfo = \"\"\"""")
+        println((new File(addonsFolder, "modinfo")).text)
+        println("""\"\"\"""")
     }
 
     //Copy paste below before a release
