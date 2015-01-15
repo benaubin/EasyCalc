@@ -6,11 +6,18 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class MainGUI extends JDialog implements KeyListener {
+public class MainGUI extends JDialog implements KeyListener, ActionListener {
 	private JPanel contentPane;
 	private JTextField equationField;
 	private JLabel Answer;
 	private JButton optionsButton;
+
+	public void actionPerformed(ActionEvent e){
+		this.setVisible(false);
+		ModListGUI dialog = new ModListGUI(this);
+		dialog.pack();
+		dialog.setVisible(true);
+	}
 
 	public void keyTyped(KeyEvent e) {
 
@@ -38,6 +45,7 @@ public class MainGUI extends JDialog implements KeyListener {
 		setContentPane(contentPane);
 		setModal(true);
 		equationField.addKeyListener(this);
+		optionsButton.addActionListener(this);
 
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
