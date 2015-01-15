@@ -31,6 +31,8 @@ class Main {
 	static ArrayList<ArrayList<String>> order = []
 	static LinkedHashMap<String,Closure> Registry = [:]
 	static LinkedHashMap<String,LinkedHashMap> meta = [:]
+	static ArrayList<ECalMod> mods = []
+
 	final static Console console = new Console()
 	static shell = new GroovyShell()
 	public static Parser parser
