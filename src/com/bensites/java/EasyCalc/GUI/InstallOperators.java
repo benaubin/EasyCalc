@@ -1,10 +1,8 @@
 package com.bensites.java.EasyCalc.GUI;
 
 import com.bensites.java.EasyCalc.Main;
-import org.apache.tools.ant.taskdefs.Exec;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class InstallOperators extends JDialog {
