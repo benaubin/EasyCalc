@@ -29,7 +29,7 @@ class Main {
 	static File modsFolder
 	static File versionFile
 	static ArrayList<ArrayList<String>> order = []
-	static LinkedHashMap<String, Closure> Registry = [:]
+	static LinkedHashMap<String, Closure> registry = [:]
 	static LinkedHashMap<String, LinkedHashMap> meta = [:]
 	static ArrayList<ECalMod> mods = []
 
@@ -44,7 +44,7 @@ class Main {
 		else console.println "EasyCalc isn't fully supported with your OS. Please paste this into a GitHub issue."
 		if (!easyCalcFolder.exists()) easyCalcFolder.mkdirs()
 		printTitle(console)
-		console.println "Welcome to EasyCal"
+		console.println "Welcome to EasyCalc"
 		console.println "Written by Ben of bensites.com"
 		def GUIThread = new Thread({
 			MainGUI mainGUI = new MainGUI()
@@ -82,6 +82,7 @@ class Main {
 			installOperators.pack()
 			installOperators.setVisible(true)
 		}
+		console.println(getRegistry().toMapString())
 		loadingBar.progress()
 		//Start the program
 		GUIThread.start()
@@ -130,7 +131,7 @@ class Main {
 	}
 
 	private static void load() {
-		Registry = shell.evaluate("[" + operatorsFile.getText() + "]")
+		registry = shell.evaluate("[" + operatorsFile.getText() + "]")
 		order = (shell.evaluate("[\n${orderFile.getText()}\n]"))
 		modsFolder.eachFileRecurse {
 			if (it.isDirectory()) {
@@ -140,7 +141,7 @@ class Main {
 	}
 
 	public static void registerOperator(ECalMod mod, File operator) {
-		shell.evaluate("{ x, y, meta ->" + operator.getText() + "}")
+		registry.put(removeEcal(operator.name),(Closure)shell.evaluate("{ x, y, meta ->" + operator.getText() + "}"))
 		meta.put(removeEcal(operator.name), [
 				"file": operator, "mod": mod])
 	}
