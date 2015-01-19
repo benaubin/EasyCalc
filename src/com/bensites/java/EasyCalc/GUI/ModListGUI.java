@@ -80,7 +80,6 @@ public class ModListGUI extends JDialog {
 	private void onOK(){
 // add your code here
 		dispose();
-		MainGUI.setVisible(true);
-		this.setVisible(false);
+		System.exit(0);
 	}
 }
