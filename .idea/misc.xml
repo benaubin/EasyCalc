@@ -67,9 +67,6 @@
   <component name="ProjectModuleManager">
     <modules />
   </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$USER_HOME$/Library/Application Support/EasyCalc/mods/EasyCalc Addons/modinfo" />
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

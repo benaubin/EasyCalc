@@ -1,8 +1,7 @@
 package com.bensites.java.EasyCalc
 
 import com.bensites.java.EasyCalc.GUI.*
-import com.bensites.java.EasyCalc.Other.ECalMod
-import com.bensites.java.EasyCalc.Other.Files
+import com.bensites.java.EasyCalc.Other.*
 import com.bensites.java.EasyCalc.Util.Console.*
 
 /** Main class.
@@ -22,7 +21,7 @@ class Main {
 	 * Minor: Asks user to trigger an operators installer
 	 * Fix: Does nothing
 	 */
-	static final version = ["1", "2", "0"]
+	static final version = ["1", "2", "5"]
 	static File easyCalcFolder = new File("EasyCalc/")
 	static File operatorsFile
 	static File orderFile
@@ -30,6 +29,7 @@ class Main {
 	static File versionFile
 	static ArrayList<ArrayList<String>> order = []
 	static LinkedHashMap<String, Closure> registry = [:]
+    static LinkedHashMap<String, ArrayList<Closure<ArrayList<String>>>> parsers = [before:[],after:[]]
 	static LinkedHashMap<String, LinkedHashMap> meta = [:]
 	static ArrayList<ECalMod> mods = []
 
@@ -82,7 +82,6 @@ class Main {
 			installOperators.pack()
 			installOperators.setVisible(true)
 		}
-		console.println(getRegistry().toMapString())
 		loadingBar.progress()
 		//Start the program
 		GUIThread.start()
@@ -145,6 +144,12 @@ class Main {
 		meta.put(removeEcal(operator.name), [
 				"file": operator, "mod": mod])
 	}
+
+    public static void registerParser(ParserType type, File parser){
+        def it = parsers.get(type)
+        it.add((Closure<ArrayList<String>>) shell.evaluate("{ArrayList<String> equation ->" + parser.text + "}"))
+        parsers.replace(type,it)
+    }
 
 	static String removeEcal(String fileName) {
 		fileName.take(fileName.length() - 5)
